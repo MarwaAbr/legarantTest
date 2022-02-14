@@ -8,13 +8,13 @@ import 'rxjs/Rx';
  */
 let prettifyContact = (contact) => {
     return {
-        id: contact.ClientID__c,
-        name: contact.Name,
+        id: contact.sfid,
+        name: contact.name,
        // title: contact.title,
         //picture: broker.picture__c,
-        phone: contact.Phone,
-        mobilePhone: contact.MobilePhone,
-        email: contact.Email
+        phone: contact.phone,
+        mobilePhone: contact.mobilephone,
+        email: contact.email
     };
 };
 
