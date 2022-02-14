@@ -13,11 +13,11 @@ export class BrokerDetailsPage {
 
     constructor(nav, navParams, brokerService) {
         this.brokerService = brokerService;
-        this.broker = navParams.get('broker');
+        this.contact = navParams.get('contact');
     }
 
     ngOnInit() {
-        this.brokerService.findById(this.broker.id).subscribe(broker => this.broker = broker);
+        this.brokerService.findById(this.contact.id).subscribe(contact => this.contact = contact);
     }
 
 }
