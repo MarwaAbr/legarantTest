@@ -25,9 +25,9 @@ var favoriteTable = 'favorite__c';
 var contactTable = 'contact';
 
 // setup the demo data if needed
-client.query('SELECT * FROM salesforce.Contact', function(error, data) {
+client.query('SELECT * FROM salesforce.contact', function(error, data) {
   if (error !== null) {
-    client.query('SELECT * FROM Contact', function(error, data) {
+    client.query('SELECT * FROM contact', function(error, data) {
       if (error !== null) {
         console.log('Loading Demo Data...');
         require('./db/demo.js')(client);
@@ -39,7 +39,7 @@ client.query('SELECT * FROM salesforce.Contact', function(error, data) {
     var schema = 'salesforce.';
     propertyTable = schema + 'property__c';
     favoriteTable = schema + 'favorite__c';
-    contactTable = schema + 'Contact';
+    contactTable = schema + 'contact';
   }
 });
 
@@ -76,14 +76,14 @@ app.delete('/favorite/:sfid', function(req, res) {
 });
 
 
-app.get('/Contact', function(req, res) {
+app.get('/contact', function(req, res) {
   client.query('SELECT * FROM ' + contactTable, function(error, data) {
     res.json(data.rows);
   });
 });
 
-app.get('/Contact/:ClientID__c', function(req, res) {
-  client.query('SELECT * FROM ' + contactTable + ' WHERE ClientID__c = $1', [req.params.ClientID__c], function(error, data) {
+app.get('/Contact/:sfid', function(req, res) {
+  client.query('SELECT * FROM ' + contactTable + ' WHERE sfid= $1', [req.params.sfid], function(error, data) {
     res.json(data.rows[0]);
   });
 });
