@@ -18,12 +18,12 @@ export class BrokerListPage {
     }
 
     ngOnInit() {
-        this.brokerService.findAll().subscribe(brokers => this.brokers = brokers);
+        this.brokerService.findAll().subscribe(contacts => this.contacts = contacts);
     }
 
-    itemTapped(event, broker) {
+    itemTapped(event, contact) {
         this.nav.push(BrokerDetailsPage, {
-            broker: broker
+            contact: contact
         });
     }
 
