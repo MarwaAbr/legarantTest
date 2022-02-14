@@ -1,12 +1,12 @@
 module.exports = function(client) {
 
   client.query(`CREATE TABLE contact (
-   //id SERIAL NOT NULL,
-   //sfid CHARACTER VARYING(18) UNIQUE,
-   Name CHARACTER VARYING(80),
-  Email CHARACTER VARYING(80),
-   Phone CHARACTER VARYING(40),
-   MobilePhone CHARACTER VARYING(40),
+   id SERIAL NOT NULL,
+   sfid CHARACTER VARYING(18) UNIQUE,
+   name CHARACTER VARYING(80),
+  email CHARACTER VARYING(80),
+   phone CHARACTER VARYING(40),
+   mobilephone CHARACTER VARYING(40),
    //title CHARACTER VARYING(30),
   // picture__c CHARACTER VARYING(255)
   );`);
