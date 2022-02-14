@@ -6,7 +6,7 @@
 </ion-navbar>
 
 <ion-content class="broker">
-    <div *ngIf="contact" class="selection">
+    <div *ngIf="broker" class="selection">
         <ion-card>
             <ion-card-content>
                 <!--<img src="{{broker.picture}}"/>-->
@@ -15,7 +15,7 @@
             </ion-card-content>
 
             <ion-list>
-                <a href="tel:{{contact.Phone}}" ion-item>
+                <a href="tel:{{contact.phone}}" ion-item>
                     <ion-icon name="call" item-left></ion-icon>
                     <p>Call Office</p>
                     <h2>{{contact.phone}}</h2>
@@ -23,7 +23,7 @@
                 <a href="tel:{{contact.phone}}" ion-item>
                     <ion-icon name="call" item-left></ion-icon>
                     <p>Call Mobile</p>
-                    <h2>{{contact.MobilePhone}}</h2>
+                    <h2>{{contact.mobilephone}}</h2>
                 </a>
                 <a href="tel:{{contact.phone}}" ion-item>
                     <ion-icon name="text" item-left></ion-icon>
