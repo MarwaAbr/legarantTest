@@ -22,12 +22,12 @@ client.connect();
 
 var propertyTable = 'property__c';
 var favoriteTable = 'favorite__c';
-var brokerTable = 'broker__c';
+var contactTable = 'contact';
 
 // setup the demo data if needed
-client.query('SELECT * FROM salesforce.broker__c', function(error, data) {
+client.query('SELECT * FROM salesforce.contact', function(error, data) {
   if (error !== null) {
-    client.query('SELECT * FROM broker__c', function(error, data) {
+    client.query('SELECT * FROM contact', function(error, data) {
       if (error !== null) {
         console.log('Loading Demo Data...');
         require('./db/demo.js')(client);
@@ -39,7 +39,7 @@ client.query('SELECT * FROM salesforce.broker__c', function(error, data) {
     var schema = 'salesforce.';
     propertyTable = schema + 'property__c';
     favoriteTable = schema + 'favorite__c';
-    brokerTable = schema + 'broker__c';
+    contactTable = schema + 'contact';
   }
 });
 
@@ -51,7 +51,7 @@ app.get('/property', function(req, res) {
 });
 
 app.get('/property/:id', function(req, res) {
-  client.query('SELECT ' + propertyTable + '.*, ' + brokerTable + '.sfid AS broker__c_sfid, ' + brokerTable + '.name AS broker__c_name, ' + brokerTable + '.email__c AS broker__c_email__c, ' + brokerTable + '.phone__c AS broker__c_phone__c, ' + brokerTable + '.mobile_phone__c AS broker__c_mobile_phone__c, ' + brokerTable + '.title__c AS broker__c_title__c, ' + brokerTable + '.picture__c AS broker__c_picture__c FROM ' + propertyTable + ' INNER JOIN ' + brokerTable + ' ON ' + propertyTable + '.broker__c = ' + brokerTable + '.sfid WHERE ' + propertyTable + '.sfid = $1', [req.params.id], function(error, data) {
+  client.query('SELECT ' + propertyTable + '.*, ' + contactTable + '.sfid AS contact_sfid, ' + contactTable + '.name AS contact_name, ' + contactTable + '.email AS contact_email, ' + contactTable + '.phone AS contact_phone, ' + contactTable + '.mobile_phone AS contact_mobile_phone, ' + contactTable + '.title__c AS contact_title, ' + propertyTable + ' INNER JOIN ' + contactTable + ' ON ' + propertyTable + '.contact = ' + contactTable + '.sfid WHERE ' + propertyTable + '.sfid = $1', [req.params.id], function(error, data) {
     res.json(data.rows[0]);
   });
 });
@@ -76,14 +76,14 @@ app.delete('/favorite/:sfid', function(req, res) {
 });
 
 
-app.get('/broker', function(req, res) {
-  client.query('SELECT * FROM ' + brokerTable, function(error, data) {
+app.get('/contact', function(req, res) {
+  client.query('SELECT * FROM ' + contactTable, function(error, data) {
     res.json(data.rows);
   });
 });
 
 app.get('/broker/:sfid', function(req, res) {
-  client.query('SELECT * FROM ' + brokerTable + ' WHERE sfid = $1', [req.params.sfid], function(error, data) {
+  client.query('SELECT * FROM ' + contactTable + ' WHERE sfid = $1', [req.params.sfid], function(error, data) {
     res.json(data.rows[0]);
   });
 });
