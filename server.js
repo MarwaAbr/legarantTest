@@ -82,11 +82,11 @@ app.get('/contact', function(req, res) {
   });
 });
 
-app.get('/broker/:sfid', function(req, res) {
+/*app.get('/contact/:ClientID__c', function(req, res) {
   client.query('SELECT * FROM ' + contactTable + ' WHERE sfid = $1', [req.params.sfid], function(error, data) {
     res.json(data.rows[0]);
   });
-});
+});*/
 
 var port = process.env.PORT || 8200;
 
