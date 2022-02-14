@@ -9,12 +9,12 @@ import 'rxjs/Rx';
 let prettifyContact = (contact) => {
     return {
         id: contact.sfid,
-        name: contact.name,
+        name: contact.Name,
        // title: contact.title,
         //picture: broker.picture__c,
-        phone: contact.phone,
-        mobilePhone: contact.mobilephone,
-        email: contact.email
+        phone: contact.Phone,
+        mobilePhone: contact.MobilePhone,
+        email: contact.Email
     };
 };
 
